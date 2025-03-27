@@ -8,7 +8,7 @@ export default function FileUploadPage() {
   const [file, setFile] = useState<File | null>(null);
   const [result, setResult] = useState<string | null>(null);
   const [showResult, setShowResult] = useState(false);
-  const [dragging, setDragging] = useState(false);
+  //const [dragging, setDragging] = useState(false);
 
   // Handle file selection
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -18,20 +18,20 @@ export default function FileUploadPage() {
   };
 
   // Drag & Drop Handlers
-  const handleDragOver = (event: React.DragEvent) => {
-    event.preventDefault();
-    setDragging(true);
-  };
+  // const handleDragOver = (event: React.DragEvent) => {
+  //   event.preventDefault();
+  //   setDragging(true);
+  // };
 
-  const handleDragLeave = () => setDragging(false);
+  // const handleDragLeave = () => setDragging(false);
 
-  const handleDrop = (event: React.DragEvent) => {
-    event.preventDefault();
-    setDragging(false);
-    if (event.dataTransfer.files.length > 0) {
-      setFile(event.dataTransfer.files[0]);
-    }
-  };
+  // const handleDrop = (event: React.DragEvent) => {
+  //   event.preventDefault();
+  //   setDragging(false);
+  //   if (event.dataTransfer.files.length > 0) {
+  //     setFile(event.dataTransfer.files[0]);
+  //   }
+  // };
 
   // Handle file submission
   const handleSubmit = async () => {
@@ -54,18 +54,18 @@ export default function FileUploadPage() {
   };
 
   // Handle file download
-  const handleDownload = () => {
-    if (!file || !result) return;
+  // const handleDownload = () => {
+  //   if (!file || !result) return;
 
-    const fileContent = `File: ${file.name}\nPrediction: ${result}`;
-    const blob = new Blob([fileContent], { type: "text/plain" });
-    const a = document.createElement("a");
-    a.href = URL.createObjectURL(blob);
-    a.download = "file_prediction.txt";
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-  };
+  //   const fileContent = `File: ${file.name}\nPrediction: ${result}`;
+  //   const blob = new Blob([fileContent], { type: "text/plain" });
+  //   const a = document.createElement("a");
+  //   a.href = URL.createObjectURL(blob);
+  //   a.download = "file_prediction.txt";
+  //   document.body.appendChild(a);
+  //   a.click();
+  //   document.body.removeChild(a);
+  // };
 
   // Handle store (download from backend)
   const handleStore = async () => {
